@@ -31,6 +31,7 @@ def get_data(address):
         return None
 
 def validate_data(data):
+    # Initialize results dictionary
     results = {"errors": 0, "wrong/unknown type": 0}
     for i in range(len(data)):
         if data[i]["@type"] not in schemas.all_schemas.keys() or "@type" not in data[i].keys():
