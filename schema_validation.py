@@ -4,7 +4,7 @@ import time
 from bs4 import BeautifulSoup
 
 from schema import Schema, And, Use, Optional, Regex
-import schemas
+from schemas import all_schemas
 
 URL = "https://quantamixsolutions.com/blog/65/how-to-turn-your-website-into-an-organic-growth-machine"
 URL_TIMEOUT = 10.0
@@ -34,11 +34,11 @@ def validate_data(data):
     # Initialize results dictionary
     results = {"errors": 0, "wrong/unknown type": 0}
     for i in range(len(data)):
-        if data[i]["@type"] not in schemas.all_schemas.keys() or "@type" not in data[i].keys():
+        if data[i]["@type"] not in all_schemas().keys() or "@type" not in data[i].keys():
             print(f"Script #{i} has a wrong/unknown type")
             results["wrong/unknown type"] += 1
             continue
-        validated = schemas.all_schemas[data[i]["@type"]].is_valid(data[i])
+        validated = all_schemas()[data[i]["@type"]].is_valid(data[i])
         if validated:
             if data[i]["@type"] not in results.keys():
                 results[data[i]["@type"]] = 1

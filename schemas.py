@@ -163,15 +163,17 @@ product_schema = Schema({
     Optional(str): object
 })
 
-all_schemas = {
-    "Organization": organization_schema,
-    "Corporation": organization_schema,
-    "Person": person_schema,
-    "Article": article_schema,
-    "BlogPosting": article_schema,
-    "NewsArticle": article_schema,
-    "BreadcrumbList": breadcrumb_schema,
-    "FAQPage": faq_schema,
-    "VideoObject": video_schema,
-    "Product": product_schema
-}
+def all_schemas():
+    all_schemas = {
+        "Organization": organization_schema,
+        "Corporation": organization_schema,
+        "Person": person_schema,
+        "Article": article_schema,
+        "BlogPosting": article_schema,
+        "NewsArticle": article_schema,
+        "BreadcrumbList": breadcrumb_schema,
+        "FAQPage": faq_schema,
+        "VideoObject": video_schema,
+        "Product": product_schema
+    }
+    return all_schemas
